@@ -1,117 +1,116 @@
-# Stroke Risk Analysis
+# Análisis de factores asociados al riesgo de accidente cerebrovascular
 
-A statistical and exploratory analysis of stroke risk factors using **Python**.
+Proyecto de análisis estadístico con Python que explora la relación entre variables demográficas y clínicas y la presencia de accidentes cerebrovasculares (ACV).
 
-The project studies relationships between demographic and clinical variables and the occurrence of stroke, combining exploratory data analysis, statistical inference, distribution fitting, non-parametric estimation, hypothesis testing, and an experimental logistic regression model.
+Combina análisis exploratorio, ajuste de distribuciones, estimación, pruebas de hipótesis y un modelo experimental de regresión logística.
 
-## Objectives
+## Objetivos
 
-- Explore the dataset and identify relevant patterns in stroke-related variables.
-- Study the relationship between stroke occurrence and factors such as age, glucose levels, hypertension, and heart disease.
-- Estimate and test probability distributions for selected variables.
-- Apply confidence intervals and hypothesis tests.
-- Use non-parametric density estimation when simple parametric models do not provide a good fit.
-- Explore a logistic regression model for stroke classification.
+- Explorar las características del conjunto de datos.
+- Estudiar la relación entre la presencia de ACV y variables como la edad, el nivel promedio de glucosa, la hipertensión y las enfermedades cardíacas.
+- Estimar parámetros y construir intervalos de confianza.
+- Evaluar el ajuste de distribuciones mediante pruebas estadísticas.
+- Explorar un modelo de clasificación e interpretar sus limitaciones.
 
-## Dataset
+## Datos
 
-The dataset includes variables such as:
+El archivo `stroke-dataset.csv` contiene las variables utilizadas en el análisis, entre ellas:
 
-- Age
-- Gender
-- Hypertension
-- Heart disease
-- Average glucose level
-- BMI
-- Smoking status
-- Work and residence type
-- Stroke occurrence
+- Edad y género.
+- Hipertensión y enfermedades cardíacas.
+- Nivel promedio de glucosa.
+- Índice de masa corporal (IMC).
+- Historial de tabaquismo.
+- Tipo de trabajo y residencia.
+- Presencia de accidente cerebrovascular.
 
-The dataset used in the analysis is included in the repository as `stroke-dataset.csv`.
+## Contenido del análisis
 
-## Analysis
+### Análisis exploratorio
 
-The notebook includes:
+Inspección de los datos, estadísticas descriptivas y visualizaciones para estudiar la distribución de las variables y sus relaciones.
 
-### Exploratory Data Analysis
+### Estimación y ajuste de distribuciones
 
-Data inspection, descriptive statistics, visualizations, and analysis of the distributions of relevant variables.
+- Estimación mediante el método de los momentos y máxima verosimilitud.
+- Construcción de intervalos de confianza.
+- Ajuste de distribuciones para variables como la edad y la glucosa.
+- Simulación mediante el método de la transformada inversa.
 
-### Statistical Modeling
+### Pruebas de bondad de ajuste
 
-- Parameter estimation using the method of moments and maximum likelihood.
-- Confidence intervals.
-- Distribution fitting for variables such as age and average glucose level.
-- Inverse-transform simulation.
+- Prueba de Shapiro-Wilk para evaluar la normalidad de la edad.
+- Prueba de Anderson-Darling para evaluar el ajuste de la glucosa a una distribución Gamma.
+- Estimación del valor p mediante bootstrap.
+- Exploración de la estimación de densidad por kernels (KDE) como alternativa no paramétrica.
 
-### Goodness-of-Fit Tests
+### Pruebas de hipótesis
 
-- **Shapiro-Wilk** test for normality of age.
-- **Anderson-Darling** test for average glucose level against a Gamma distribution.
-- Bootstrap estimation of the Anderson-Darling p-value.
-- Exploration of non-parametric alternatives using **Kernel Density Estimation (KDE)**.
+Comparación de variables clínicas entre personas con y sin ACV para estudiar diferencias estadísticas entre ambos grupos.
 
-### Hypothesis Testing
+### Regresión logística
 
-Statistical tests are used to study whether clinical variables differ meaningfully between individuals with and without stroke.
+Exploración de un modelo que utiliza la glucosa promedio y la presencia de enfermedades cardíacas como predictores.
 
-### Logistic Regression
+Esta sección aborda una limitación importante de la clasificación con clases desbalanceadas: una exactitud global elevada puede coexistir con una baja sensibilidad para detectar la clase minoritaria.
 
-An experimental logistic regression model is built using average glucose level and heart disease as predictors.
+## Tecnologías
 
-The model illustrates an important issue in medical classification datasets: high overall accuracy can coexist with very low recall when the target classes are heavily imbalanced.
+- Python
+- pandas y NumPy
+- SciPy
+- Matplotlib y Seaborn
+- scikit-learn
+- Jupyter Notebook
 
-## Tools
+## Cómo ejecutar el proyecto
 
-`Python` · `Pandas` · `NumPy` · `SciPy` · `Matplotlib` · `Seaborn` · `Scikit-learn` · `Jupyter Notebook`
+Se requiere Python y `pip`.
 
-## Running the project
+1. Clonar el repositorio:
 
-Clone the repository:
+   ```bash
+   git clone https://github.com/gabalero8/stroke-risk-analysis.git
+   cd stroke-risk-analysis
+   ```
 
-```bash
-git clone https://github.com/gabalero8/stroke-risk-analysis.git
-cd stroke-risk-analysis
-```
+2. Instalar las bibliotecas utilizadas:
 
-Install the required libraries:
+   ```bash
+   pip install pandas numpy scipy matplotlib seaborn scikit-learn notebook
+   ```
 
-```bash
-pip install pandas numpy scipy matplotlib seaborn scikit-learn notebook
-```
+3. Iniciar Jupyter Notebook:
 
-Start Jupyter:
+   ```bash
+   jupyter notebook
+   ```
 
-```bash
-jupyter notebook
-```
+4. Abrir `stroke_analysis.ipynb` y ejecutar las celdas en orden.
 
-Then open:
+El archivo `stroke-dataset.csv` debe permanecer disponible en la carpeta del proyecto.
 
-```text
-notebook final.ipynb
-```
-
-## Repository structure
+## Estructura del repositorio
 
 ```text
 .
-├── notebook final.ipynb    # Main analysis notebook
-├── stroke-dataset.csv      # Dataset
-└── stroke.jpg              # Project cover image
+├── README.md
+├── stroke_analysis.ipynb   # Notebook principal del análisis
+├── stroke-dataset.csv     # Datos utilizados
+└── stroke.jpg             # Imagen del proyecto
 ```
 
-## Background
+## Contexto académico y autores
 
-Originally developed as a university project for **INF280**.
+Proyecto desarrollado originalmente para la asignatura INF280.
 
-This was a team project developed by:
+Integrantes:
 
 - Cristobal Martinez
 - Gabriel Lira
 - Francisco Pino
 - Catalina Zenteno
 
-## Note
+## Alcance y limitaciones
 
-This project is an academic statistical analysis and should not be interpreted as a medical diagnostic tool.
+Este proyecto tiene fines académicos y de aprendizaje. Las asociaciones estudiadas no permiten establecer causalidad y el modelo experimental no constituye una herramienta de diagnóstico médico.
